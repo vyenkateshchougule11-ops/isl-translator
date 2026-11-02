@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How it works · ISL Translator</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body data-page="about">
+  <header id="site-header"></header>
+
+  <main class="page">
+    <div class="page-head">
+      <h2>How it works</h2>
+      <p>A short tour of what happens between your camera and the translated sentence, plus tips for getting the best results.</p>
+    </div>
+
+    <!-- Pipeline -->
+    <section class="section">
+      <h3 class="section-title">From camera to sentence</h3>
+      <p class="section-sub">Six stages run on your own computer for every frame.</p>
+      <div class="grid-3">
+        <div class="card step"><div class="num">1</div><h3>Capture</h3><p>The Python backend reads the webcam directly and mirrors each frame, exactly as it did while the model was trained.</p></div>
+        <div class="card step"><div class="num">2</div><h3>Find landmarks</h3><p>MediaPipe Holistic locates your upper body and both hands. Your face gets a <b style="color:#2563eb">blue</b> box and your hands get <b style="color:#b7791f">yellow</b> boxes.</p></div>
+        <div class="card step"><div class="num">3</div><h3>Make features</h3><p>Landmarks become 258 numbers per frame, measured from your shoulders so distance from the camera does not matter.</p></div>
+        <div class="card step"><div class="num">4</div><h3>Recognise</h3><p>A three-layer LSTM network looks at the latest 60 frames (about 3 seconds) and scores every word.</p></div>
+        <div class="card step"><div class="num">5</div><h3>Stabilise</h3><p>A word is accepted only with at least 70% confidence and when it wins 4 of the last 8 votes. Resting hands are ignored.</p></div>
+        <div class="card step"><div class="num">6</div><h3>Present</h3><p>Words join a sentence you can edit. Show it, speak it, or share a read-only link with another person.</p></div>
+      </div>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="section">
+      <h3 class="section-title">Vocabulary</h3>
+      <p class="section-sub">Words the current model can recognise.</p>
+      <div id="wordCards" class="grid-4"></div>
+    </section>
+
+    <!-- Tips -->
+    <section class="section">
+      <h3 class="section-title">Tips for best results</h3>
+      <p class="section-sub">Small things that make recognition noticeably better.</p>
+      <div class="grid-3">
+        <div class="card feature"><div class="icon">💡</div><h3>Good light</h3><p>Face a window or lamp. Avoid strong light behind you.</p></div>
+        <div class="card feature"><div class="icon">🖼️</div><h3>Plain background</h3><p>A calm background helps the camera find your hands.</p></div>
+        <div class="card feature"><div class="icon">🙆</div><h3>Show upper body</h3><p>Keep both shoulders and both hands inside the picture.</p></div>
+        <div class="card feature"><div class="icon">📏</div><h3>Sit about an arm's length away</h3><p>Not too close, not too far. Stay roughly where you were when recording.</p></div>
+        <div class="card feature"><div class="icon">⏱️</div><h3>Sign calmly</h3><p>Do one sign, then rest your hands for a moment before the next.</p></div>
+        <div class="card feature"><div class="icon">🧹</div><h3>Fix mistakes quickly</h3><p>Click × on a wrong word or drag words into a better order before completing the sentence.</p></div>
+      </div>
+    </section>
+
+    <!-- Colours legend -->
+    <section class="section">
+      <div class="card">
+        <h3>What the colours on the video mean</h3>
+        <p class="sub">These boxes are only a visual aid. They do not change what the model sees.</p>
+        <div class="legend" style="font-size:15px;gap:28px">
+          <span><i class="dot blue"></i>Blue box: face</span>
+          <span><i class="dot yellow"></i>Yellow box: each hand</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <h3 class="section-title">Questions</h3>
+      <details class="faq"><summary>Is my video uploaded anywhere?</summary><p>No. The camera is processed on your own computer. Only if you press Share live view does a read-only copy of the video and translation travel through a temporary link, and it stops as soon as you stop sharing.</p></details>
+      <details class="faq"><summary>Why does the first word take about three seconds?</summary><p>The model needs a full window of 60 frames (3 seconds) before it can make its first decision. After that it updates continuously.</p></details>
+      <details class="faq"><summary>Why did a word appear that I did not sign?</summary><p>Hand movement between two signs can look like the start of a sign. Remove the word with its × button. Sign calmly and pause between words to reduce this.</p></details>
+      <details class="faq"><summary>Can more words be added?</summary><p>Yes. Record and train again in the notebook, then copy the new model and metadata files into the models folder. The app reads the word list from the metadata automatically.</p></details>
+      <details class="faq"><summary>What happens when I leave the Translator page?</summary><p>The camera is released. Completed sentences and an active share link are kept, so you can come back and continue.</p></details>
+    </section>
+
+    <section class="cta-band">
+      <h3>Give it a try</h3>
+      <p>Open the translator and sign one of the words above.</p>
+      <a class="btn primary big" href="/static/translate.html">Open Translator →</a>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="/static/js/nav.js"></script>
+  <script src="/static/js/about.js"></script>
+</body>
+</html>

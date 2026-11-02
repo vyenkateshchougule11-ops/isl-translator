@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISL Translator · Live view</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="viewer">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🤟</span>
+      <div>
+        <h1>ISL Translator</h1>
+        <p>Live view · read only</p>
+      </div>
+    </div>
+    <span id="liveBadge" class="badge">Connecting…</span>
+  </header>
+
+  <main class="layout">
+    <section class="card camera-card">
+      <div class="stage">
+        <img id="feed" alt="Live camera feed" />
+        <div id="placeholder" class="placeholder">
+          <span>⏳</span>
+          <p id="waitMsg">Connecting…</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card sidebar">
+      <section>
+        <h2>Detected word</h2>
+        <div class="detected">
+          <div id="label" class="detected-word">—</div>
+          <div class="bar"><div id="confBar"></div></div>
+          <div class="row small muted"><span>Confidence</span><span id="confidence">—</span></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Current sentence</h2>
+        <div id="words" class="words" data-placeholder="Waiting for signs…"></div>
+      </section>
+
+      <section>
+        <h2>Completed sentences</h2>
+        <ol id="history" class="history" data-placeholder="No completed sentences yet."></ol>
+      </section>
+
+      <section class="settings">
+        <label class="switch">
+          <input type="checkbox" id="audioToggle" />
+          <span>🔊 Hear the translation on this device</span>
+        </label>
+      </section>
+    </aside>
+  </main>
+
+  <script src="/static/js/viewer.js"></script>
+</body>
+</html>

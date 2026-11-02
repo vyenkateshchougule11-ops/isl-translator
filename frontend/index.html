@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISL Translator · Home</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body data-page="home">
+  <header id="site-header"></header>
+
+  <main class="page">
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <span class="eyebrow">REAL-TIME · CAMERA ONLY · FREE</span>
+        <h1>Turn Indian Sign Language into <em>text and speech</em>, live.</h1>
+        <p>Sign in front of your laptop camera. The translator recognises each word, builds a sentence you can edit, and can read it aloud or share it with someone far away.</p>
+        <div class="hero-actions">
+          <a class="btn primary big" href="/static/translate.html">Open Translator →</a>
+          <a class="btn ghost big" href="/static/stats.html">View model statistics</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orb">🤟</div>
+        <span class="float f1">Hello</span>
+        <span class="float f2">Thank You</span>
+        <span class="float f3">Water</span>
+        <span class="float f4">Please</span>
+      </div>
+    </section>
+
+    <!-- Live numbers from the loaded model -->
+    <section class="stat-strip">
+      <div class="card stat"><b id="sAcc">—</b><span>Test accuracy</span></div>
+      <div class="card stat"><b id="sWords">—</b><span>Words understood</span></div>
+      <div class="card stat"><b>3 s</b><span>Signing window (60 frames)</span></div>
+      <div class="card stat"><b>258</b><span>Features per frame</span></div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section">
+      <h3 class="section-title">How it works</h3>
+      <p class="section-sub">Four simple steps from a camera frame to a spoken sentence.</p>
+      <div class="grid-4">
+        <div class="card step"><div class="num">1</div><h3>See</h3><p>The camera is read on your computer. A blue box marks your face and yellow boxes mark your hands.</p></div>
+        <div class="card step"><div class="num">2</div><h3>Track</h3><p>MediaPipe finds your body and hand landmarks and turns them into 258 numbers per frame.</p></div>
+        <div class="card step"><div class="num">3</div><h3>Recognise</h3><p>An LSTM network reads the last 3 seconds and names the word you signed.</p></div>
+        <div class="card step"><div class="num">4</div><h3>Speak</h3><p>Words form a sentence you can fix, then show as text, play as audio, or share by link.</p></div>
+      </div>
+      <p style="margin-top:14px"><a href="/static/about.html">Read the full explanation →</a></p>
+    </section>
+
+    <!-- Features -->
+    <section class="section">
+      <h3 class="section-title">What you can do</h3>
+      <p class="section-sub">Everything runs from one small web app.</p>
+      <div class="grid-3">
+        <div class="card feature"><div class="icon">🎥</div><h3>Live translation</h3><p>See the detected word and how confident the model is, updated in real time.</p></div>
+        <div class="card feature"><div class="icon">✍️</div><h3>Sentence builder</h3><p>Remove wrong words, drag words into a better order, then complete the sentence.</p></div>
+        <div class="card feature"><div class="icon">🔊</div><h3>Optional audio</h3><p>Hear each word or the whole sentence. Audio stays off until you tick the box.</p></div>
+        <div class="card feature"><div class="icon">🔗</div><h3>Share live view</h3><p>Create a link and send it by WhatsApp or SMS. The other person watches on any device.</p></div>
+        <div class="card feature"><div class="icon">📊</div><h3>Model statistics</h3><p>Accuracy, words, graphs, heat maps and the confusion matrix on one page.</p></div>
+        <div class="card feature"><div class="icon">🔒</div><h3>Private by design</h3><p>Video is processed on your own computer. Nothing is sent anywhere unless you share a link.</p></div>
+      </div>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="section">
+      <h3 class="section-title">Words it understands</h3>
+      <p class="section-sub">The current model knows these signs. More can be added by training again.</p>
+      <div id="homeWords" class="chips"></div>
+    </section>
+
+    <section class="cta-band">
+      <h3>Ready to try it?</h3>
+      <p>Allow a minute for the camera to start, then sign your first word.</p>
+      <a class="btn primary big" href="/static/translate.html">Start translating</a>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="/static/js/nav.js"></script>
+  <script src="/static/js/home.js"></script>
+</body>
+</html>

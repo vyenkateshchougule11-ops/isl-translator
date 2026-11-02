@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Translator · ISL Translator</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body data-page="translate">
+  <header id="site-header"></header>
+
+  <main class="page">
+    <div class="page-head">
+      <h2>Live Translator</h2>
+      <p>Press <b>Start Translation</b>, then sign in front of the camera. Detected words appear on the right and join a sentence that you can edit.</p>
+    </div>
+
+    <div class="translator-grid">
+      <!-- Camera -->
+      <section class="card camera-card">
+        <div class="stage">
+          <img id="feed" alt="Live camera feed" />
+          <div id="placeholder" class="placeholder">
+            <span>📷</span>
+            <p>Camera is off</p>
+            <small>Click “Start Translation” to begin</small>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="toggleBtn" class="btn primary">Start Translation</button>
+          <button id="shareBtn" class="btn ghost">🔗 Share live view</button>
+          <div class="legend">
+            <span><i class="dot blue"></i>Face</span>
+            <span><i class="dot yellow"></i>Hands</span>
+          </div>
+        </div>
+
+        <div id="sharePanel" class="share-panel" hidden>
+          <div class="share-row">
+            <input id="shareLink" class="share-link" readonly />
+            <button id="copyBtn" class="btn ghost">Copy</button>
+          </div>
+          <div class="share-row">
+            <a id="waBtn" class="btn ghost" target="_blank" rel="noopener">WhatsApp</a>
+            <a id="smsBtn" class="btn ghost">SMS</a>
+            <span id="viewers" class="muted"></span>
+            <button id="stopShareBtn" class="link">Stop sharing</button>
+          </div>
+        </div>
+
+        <p id="status" class="status"></p>
+        <p id="vocab" class="vocab"></p>
+      </section>
+
+      <!-- Live result -->
+      <div class="stack">
+        <section class="card">
+          <h2>Detected word</h2>
+          <div class="detected">
+            <div id="label" class="detected-word">—</div>
+            <div class="bar"><div id="confBar"></div></div>
+            <div class="row small muted"><span>Confidence</span><span id="confidence">—</span></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Current sentence</h2>
+          <div id="words" class="words" data-placeholder="Words you sign will appear here…"></div>
+          <p class="hint muted words-hint">Drag a word to reorder · click × to remove a wrong word</p>
+          <div class="sentence-actions">
+            <button id="completeBtn" class="btn success" title="Shortcut: Enter">✓ Complete sentence</button>
+            <button id="undoBtn" class="btn ghost" title="Shortcut: Backspace">⌫ Undo word</button>
+            <button id="clearBtn" class="btn ghost">Clear</button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="translator-grid" style="margin-top:24px">
+      <section class="card">
+        <div class="section-head">
+          <h2>Completed sentences</h2>
+          <button id="clearHistoryBtn" class="link">Clear all</button>
+        </div>
+        <ol id="history" class="history" data-placeholder="No completed sentences yet."></ol>
+      </section>
+
+      <section class="card settings">
+        <h2>Audio &amp; sentence settings</h2>
+        <label class="switch">
+          <input type="checkbox" id="audioToggle" />
+          <span>🔊 Audio translation (speak aloud)</span>
+        </label>
+        <select id="speakMode" aria-label="What to speak">
+          <option value="word">Speak each word as detected</option>
+          <option value="sentence">Speak the full sentence when completed</option>
+        </select>
+        <label class="switch">
+          <input type="checkbox" id="autoToggle" />
+          <span id="autoLabel">Auto-complete sentence after a pause</span>
+        </label>
+        <p class="hint muted">Shortcuts: <kbd>Enter</kbd> complete · <kbd>Backspace</kbd> undo word</p>
+        <p class="hint muted">Tip: the camera stops when you leave this page. Open <a href="/static/about.html">How it works</a> for signing tips.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="/static/js/nav.js"></script>
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/share.js"></script>
+</body>
+</html>
