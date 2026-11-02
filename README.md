@@ -4,6 +4,38 @@ A computer-vision-based application that uses a webcam to recognize selected Ind
 
 > **Project scope:** This repository contains a limited-vocabulary academic prototype, not a complete translator for all Indian Sign Language.
 
+## Application Screenshots
+
+### 1. Home Dashboard
+
+The dashboard introduces the application and summarizes the model's vocabulary, test accuracy, signing window, and feature configuration.
+
+![ISL Translator Home Dashboard](images/home-dashboard.png)
+
+### 2. How It Works
+
+A visual overview of the six-stage workflow, from webcam capture and MediaPipe landmark extraction to sequence classification and sentence presentation.
+
+![How ISL Translator Works](images/how-it-works.png)
+
+### 3. Translator Interface
+
+The translator page displays the detected word, confidence score, editable sentence builder, and translation controls. The camera viewport is intentionally blurred in this screenshot to protect personal privacy.
+
+![ISL Translator Interface with blurred camera viewport](images/translator-interface-camera-blurred.png)
+
+### 4. Completed Sentences and Audio Settings
+
+The interface supports completed sentence review and optional browser-based speech output, with controls for audio and automatic sentence completion.
+
+![Completed sentences and audio settings](images/completed-sentences-audio.png)
+
+### 5. Model Statistics and Evaluation
+
+The statistics page reports held-out test performance and summarizes the model configuration.
+
+![ISL Translator Model Statistics](images/model-statistics.png)
+
 ## Features
 
 - Webcam-based gesture capture using OpenCV.
@@ -18,7 +50,7 @@ A computer-vision-based application that uses a webcam to recognize selected Ind
 
 ## Technology Stack
 
-- **Language:** Python, JavaScript, HTML, CSS
+- **Languages:** Python, JavaScript, HTML, CSS
 - **Backend:** FastAPI, Uvicorn
 - **Computer vision:** OpenCV, MediaPipe Holistic
 - **Machine learning:** TensorFlow/Keras, LSTM, NumPy
@@ -46,6 +78,12 @@ isl-translator/
 │   ├── stats.html
 │   ├── translate.html
 │   └── viewer.html
+├── images/
+│   ├── home-dashboard.png
+│   ├── how-it-works.png
+│   ├── translator-interface-camera-blurred.png
+│   ├── completed-sentences-audio.png
+│   └── model-statistics.png
 ├── models/
 │   ├── isl_12_word_lstm.h5
 │   └── isl_12_word_metadata.json
@@ -108,16 +146,17 @@ To stop the application, press `Ctrl+C` in the terminal.
 
 ## Model and Evaluation Information
 
-The included metadata file records the following model configuration:
+The included metadata file and the application's statistics screen report the following model configuration:
 
 - 30 sign-word labels plus one idle/no-sign class (31 output classes).
 - Sequence length: 60 frames.
 - Feature length: 258 values per frame.
 - Feature layout: 33 pose landmarks × 4 values, 21 left-hand landmarks × 3 values, and 21 right-hand landmarks × 3 values.
 - Normalization: coordinates are centred on the shoulder midpoint and scaled by shoulder width.
-- Recorded test accuracy in `models/isl_12_word_metadata.json`: **94.62%**.
+- Recorded held-out test accuracy: **94.62% (176 correct predictions out of 186 test recordings)**.
+- Training epochs reported by the statistics page: **200**.
 
-The accuracy above is the value stored in the included model metadata. It should be interpreted in the context of the project's dataset and evaluation procedure; it is not a guarantee of performance for every signer, camera, lighting condition, or real-world environment.
+The reported accuracy reflects the project's held-out test set and evaluation procedure. It is not a guarantee of performance for every signer, camera, lighting condition, or real-world environment.
 
 ## Optional Live Sharing
 
@@ -144,12 +183,14 @@ Keep the model file and its matching metadata together. The backend checks that 
 - The project is an academic prototype and should not be treated as a certified accessibility or communication service.
 - Text-to-speech uses browser speech synthesis support and may vary by browser and operating system.
 
+
 ## Author
 
 **Vyenkatesh Chougule**
 
-- GitHub: https://github.com/vyenkateshchougule11-ops
-- LinkedIn: [Add your LinkedIn profile URL]
+- GitHub: [@vyenkateshchougule11-ops](https://github.com/vyenkateshchougule11-ops)
+- Project repository: [isl-translator](https://github.com/vyenkateshchougule11-ops/isl-translator)
+- LinkedIn: [Connect with me](https://www.linkedin.com/in/vyenkatesh-chougule-a46799390/)
 
 ## License
 
